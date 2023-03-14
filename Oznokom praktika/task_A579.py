@@ -10,32 +10,36 @@
 # – удалении приложения по номеру.
 # Провести тестирование функций.
 
-def getinfo(apps): # – вывода информации о всех приложениях;
+def action1(apps): # – вывода информации о всех приложениях;
     for i in range(len(apps)):
         print (apps[i])
 
-def getinfo_about(apps, num): # – вывода информации о приложении по введенному с клавиатуры номеру;
+def action2(apps): # – вывода информации о приложении по введенному с клавиатуры номеру;
+    num = int(input())
     print(apps[num - 1])
 
-def rating(apps, rate): # – вывода количества приложений, с оценкой выше введённого
+def action3(apps): # – вывода количества приложений, с оценкой выше введённого
     counter = 0
+    rate = int(input())
     for i in apps:
         if i["rating"] >= rate:
             counter += 1
     print(counter)
 
-def update(apps,num): # – обновлении всей информации о приложении по введенному номеру;
+def action4(apps): # – обновлении всей информации о приложении по введенному номеру;
+    num = int(input())
     apps[num]["id"] = input("enter id: ")
     apps[num]["title"] = input("enter title: ")
     apps[num]["description"] = input("enter description: ")
     apps[num]["rating"] = input("enter rating: ")
     apps[num]["last Feedback"] = input("enter last feedback: ")
-    getinfo(apps)
+    action1(apps)
     return apps
 
-def erase(apps, num): # – удалении приложения по номеру.
+def action5(apps): # – удалении приложения по номеру.
+    num = int(input())
     del apps[num - 1]
-    getinfo(apps)
+    action1(apps)
     return apps
 
 apps = [{"id" : 1 , "title" : "Google Play", "description" : "Applications for downloading other applications" ,"rating" : 4.9 , "last Feedback" : "Good app" },
@@ -49,21 +53,37 @@ apps = [{"id" : 1 , "title" : "Google Play", "description" : "Applications for d
         {"id" : 9 , "title" : "Aviasales", "description" : "Search for cheap tickets in the CIS" ,"rating" : 4.6 , "last Feedback" : "A hotel? Trivago!" },
         {"id" : 10 , "title" : "Discord", "description" : "Connect with people all over the world" ,"rating" : 4.5 , "last Feedback" : "I always use it" },]
 
+while 1:
+    print('0 - Выйти из цикла','1 – вывода информации о всех приложениях;' ,
+"2 – вывода информации о приложении по введенному с клавиатуры номеру;",
+"3 – вывода количества приложений, чей рейтинг выше чем введенный рейтинг;",
+"4 – обновлении всей информации о приложении по введенному номеру;",
+"5 - удалении приложения по номеру.",sep ="\n")
+    k = input()
+    if k == "0":
+        break 
+    exec('action'+k+"(apps)")
 
-getinfo(apps) #вывода информации о всех приложениях;+
 
-print("enter number") #вывода информации о приложении по введенному с клавиатуры номеру;
-getinfo_about(apps, int(input()))
 
-print("enter rating") # – вывода количества приложений, с оценкой выше введённого;
-rating(apps, int(input())) 
 
-print("enter number") # – обновлении всей информации о приложении по введенному номеру;
-num = int(input())-1
-update(apps,num)
 
-print("enter number") # – удалении приложения по номеру.
-apps = erase(apps, int(input()))
+
+
+# getinfo(apps) #вывода информации о всех приложениях;+
+
+# print("enter number") #вывода информации о приложении по введенному с клавиатуры номеру;
+# getinfo_about(apps, int(input()))
+
+# print("enter rating") # – вывода количества приложений, с оценкой выше введённого;
+# rating(apps, int(input())) 
+
+# print("enter number") # – обновлении всей информации о приложении по введенному номеру;
+# num = int(input())-1
+# update(apps,num)
+
+# print("enter number") # – удалении приложения по номеру.
+# apps = erase(apps, int(input()))
 
         
 
