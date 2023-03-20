@@ -31,7 +31,7 @@ try:
     assert sum_cube(9, 9) == 0
     assert sum_cube(5, 0) == 225
 except AssertionError:
-    print("TEST PASSED")
+    print("TEST ERROR")
     traceback.print_exc()
 else:
-    print("TEST ERROR")
+    print("TEST PASSED")
