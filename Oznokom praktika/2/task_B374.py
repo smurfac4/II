@@ -7,11 +7,12 @@
 
 import traceback
 
-
 def anagram_difference(words):
-    # Тело функции
-    return 0
-
+    total_diff = 0
+    for char in set(''.join(words)): # проходимся по каждому уникальному символу всех слов
+        char_count = [word.count(char) for word in words] #количество вхождений символа в каждом слове
+        total_diff += sum([abs(count - sum(char_count) // len(words)) for count in char_count]) #количество изменений, необходимых для того, чтобы превратить все слова в анаграммы.
+    return total_diff
 
 # Тесты
 try:
