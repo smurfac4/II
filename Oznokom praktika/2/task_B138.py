@@ -8,14 +8,14 @@ import traceback
 
 
 def vowel_2_index(string):
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    new_string = ""
+    vowels = ['a', 'e', 'i', 'o', 'u'] #создаем список  из букв которые будем заменять 
+    new_string = "" # пустая строка в которую все добавляем 
     index = 1
     for char in string:
         if char.lower() in vowels:
-            new_string += str(index)
+            new_string += str(index) #замена на индекс 
         else:
-            new_string += char
+            new_string += char # игнорируем просто добавляем букву 
         index += 1
     return new_string
 

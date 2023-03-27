@@ -31,13 +31,12 @@ def wiki_function(file_path):
 
     # Создаем словарь для подсчета количества каждого слова
     word_counts = {}
-    for word in text.split():
+    for word in text.split(): #это что бы он слова учитывал а не буквы
         if word not in word_counts:
             word_counts[word] = 0
         word_counts[word] += 1
-
-    # Сортируем слова по количеству появлений в порядке убывания
-    sorted_words = sorted(word_counts.items(), key=lambda x: x[1], reverse=True)
+    # Сортируем слова по количеству появлений в порядке убывания 
+    sorted_words = sorted(word_counts.items(), reverse=True)
 
     # Заменяем наиболее популярные слова на "PYTHON"
     popular_words = [word[0] for word in sorted_words[:10]]
@@ -45,11 +44,11 @@ def wiki_function(file_path):
         text = text.replace(word, 'PYTHON')
 
     # Записываем текст в новый файл
-    with open('../wiki2_0.txt','w') as f:
+    with open('wiki2_0.txt','w') as f:
         line_length = 0
         for word in text.split():
             word_length = len(word)
-            if line_length + word_length + 1 > 100:
+            if line_length + word_length + 1 > 100: #Обработка переноса 
                 f.write('\n')
                 line_length = 0
             if line_length == 0:

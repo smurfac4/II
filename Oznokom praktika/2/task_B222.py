@@ -8,21 +8,22 @@ import traceback
 import decimal as d
 
 def sum_of_fractions(number):
-    # Получаем целую часть и дробную часть числа
+    # Получаем целую часть
     kol_vo_num_fract = d.Decimal(str(number)).as_tuple().exponent*(-1)
     whole_part = int(number)
+    # и дробную часть числа
     fractional_part = float(number) - whole_part
     fractional_part = round(fractional_part,kol_vo_num_fract)
     
     # Преобразуем дробную часть в список цифр
     fraction_digits = [int(digit) for digit in str(fractional_part)[2:]]
     
-    # Создаем список дробей, начиная с десятых
+    # Создаем список дробей и вычисляем кусок числа в виде дроби на 10,100...
     fractions = []
     for i in range(1, len(fraction_digits) + 1):
-        denominator = 10 ** i
-        numerator = fraction_digits[i - 1]
-        if numerator > 0:
+        denominator = 10 ** i #знаменатель
+        numerator = fraction_digits[i - 1] #числитель 
+        if numerator > 0: # если числитель = 0 игнорируем
             fractions.append(f'{numerator}/{denominator}')
     
     # Соединяем целую часть и дроби в одну строку
