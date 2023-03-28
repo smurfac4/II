@@ -6,7 +6,7 @@
 - удалить из каждой строки все цифры, знаки препинания, скобки, кавычки и т.д. (остаются латинские буквы и пробелы); +
 - объединить все строки из списка в одну, используя метод join и пробел, как разделитель; +
 - создать словарь вида {“слово”: количество, “слово”: количество, … } для подсчета количества разных слов,
-  где ключом будет уникальное слово, а значением - количество;
+  где ключом будет уникальное слово, а значением - количество;+
 - вывести в порядке убывания 10 наиболее популярных слов, используя форматирование
   (вывод примерно следующего вида: “ 1 place --- sun --- 15 times \n....”);
 - заменить все эти слова в строке на слово “PYTHON”;
@@ -15,7 +15,8 @@
   при этом не делить слова.
 """
 
-import string
+import string 
+import re
 
 def wiki_function(file_path):
     # Открываем файл и читая построчно добавляем непустые строки в список
@@ -36,12 +37,17 @@ def wiki_function(file_path):
             word_counts[word] = 0
         word_counts[word] += 1
     # Сортируем слова по количеству появлений в порядке убывания 
-    sorted_words = sorted(word_counts.items(), reverse=True)
+    sorted_words = sorted(word_counts.items(),key = lambda x: x[1], reverse=True)
 
     # Заменяем наиболее популярные слова на "PYTHON"
     popular_words = [word[0] for word in sorted_words[:10]]
     for word in popular_words:
-        text = text.replace(word, 'PYTHON')
+        pattern = r"\b" + re.escape(word) + r"\b" #обозначаем целое слово 
+        text = re.sub(pattern, 'PYTHON', text)
+
+    # popular_words = [word[0] for word in sorted_words[:10]]
+    # for word in popular_words:
+    #     text = text.replace(word, 'PYTHON')
 
     # Записываем текст в новый файл
     with open('wiki2_0.txt','w') as f:

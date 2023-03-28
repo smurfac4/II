@@ -18,7 +18,7 @@ def sum_of_fractions(number):
     # Преобразуем дробную часть в список цифр
     fraction_digits = [int(digit) for digit in str(fractional_part)[2:]]
     
-    # Создаем список дробей и вычисляем кусок числа в виде дроби на 10,100...
+    # Создаем список дробей и вычисляем кусок числа в виде дроби деленной на 10,100...
     fractions = []
     for i in range(1, len(fraction_digits) + 1):
         denominator = 10 ** i #знаменатель

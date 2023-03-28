@@ -10,5 +10,5 @@
 # print(anagram_difference(["mouse", "house", "hose", "host"]))
 
 
-A = (["abc", "ab", "a"])
-print(A.len())
+A = ["abc", "ab", "a"]
+print(len(A))
