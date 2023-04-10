@@ -50,17 +50,19 @@ restaurant_menu = Menu("Ресторан 'Приятного Аппетита'",
 print(restaurant_menu) # Выводим всю информацию о меню
 print(len(restaurant_menu)) # Получаем количество пунктов меню
 
-restaurant_menu.get_index(1) #Получаем напитка и блюда по номеру
-restaurant_menu.get_index(2)
-restaurant_menu.get_index(6)
+restaurant_menu[1] #Получаем напитка и блюда по номеру
+restaurant_menu[3]
+#restaurant_menu[6]
 
 #  измеянем по индексу напитки
-ingredients_drink1_1 = {"Карамельный сироп": 50 , "Ягодный сироп": 40}
-restaurant_menu.change_by_index (1,"Вода с сиропам v2.0", 100, "Напитки", 300, ingredients_drink1_1)
-ingredients_food1_1 = {"Тесто для пиццы", "Сыр", "Помидоры","Огурцы"}
-restaurant_menu.change_by_index(3,"Салат цезарь v2.0",350,120,500,ingredients_food1_1)
+(1,"Вода с сиропам v2.0", 100, "Напитки", 300, {"Карамельный сироп": 50 , "Ягодный сироп": 40})
+
+
+new_change_eda = Drink("Вода с сиропам v2.0", 100, "Напитки", 300, {"Карамельный сироп": 50 , "Ягодный сироп": 40})
+restaurant_menu[1] = new_change_eda
+
 # # Удаляем напиток по индексу
-restaurant_menu.remove_obj(1)
+del restaurant_menu[1]
 
 print(restaurant_menu) # Выводим всю информацию о меню для проверки изменений
 

@@ -36,26 +36,24 @@ class Menu(Drink,Food):
         return len(self.drinks) + len(self.foods)
 
     #получение объекта по индексу
-    def get_index(self, index: int):
+    def __getitem__(self, index: int):
         index -= 1
         if  0 <= index < len(self.drinks):
             return print(f"{index+1} {Drink.vivod(self.drinks[index])}")
         elif 0 <= index < len(self.drinks) + len(self.foods): 
             return print(f"{index+1} {Food.vivod(self.foods[index - len(self.drinks)])}")
         else:
-            return None
+            raise IndexError("Неверный индекс")
         
-    def change_by_index(self, index: int ,name , price, volume, menu_category_preparation_time, ingredients):
-        index -= 1
-        if  0 <= index < len(self.drinks): # Если напиток
-            return Drink.change_all(self.drinks[index],name,price,volume,menu_category_preparation_time,ingredients)
-        elif 0 <= index < len(self.drinks) + len(self.foods):   #если еда
-            return Food.change_all(self.foods[index - len(self.drinks)] ,name, price, volume, menu_category_preparation_time, ingredients)
+    
+    def __setitem__(self, index, item):
+        if index < len(self.drinks):
+            self.drinks[index] = item
         else:
-            return None
+            self.foods[index - len(self.drinks)] = item
         
     #Удалить по индексу
-    def remove_obj(self, index):
+    def __delitem__(self, index):
         index -= 1
         if  0 <= index < len(self.drinks): # Если напиток
             del self.drinks[index]
