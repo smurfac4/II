@@ -25,10 +25,10 @@ class Menu(Drink,Food):
     def __str__(self):
         menu_str = f"\nРесторан: {self.restaurant_name}\nАдрес: {self.address}\n\nНапитки:\n"
         for i in self.drinks:
-            menu_str += f"{self.drinks.index(i)+1} {Drink.vivod(i)} \n"
+            menu_str += f"{self.drinks.index(i)+1} {Drink.__str__(i)} \n"
         menu_str += "\nБлюда:\n"
         for i in self.foods:
-            menu_str += f"{self.foods.index(i)+1+len(self.drinks)} {Food.vivod(i)} \n"
+            menu_str += f"{self.foods.index(i)+1+len(self.drinks)} {Food.__str__(i)} \n"
         return menu_str
 
     #Вывод количества позициЙ меню
@@ -39,9 +39,9 @@ class Menu(Drink,Food):
     def __getitem__(self, index: int):
         index -= 1
         if  0 <= index < len(self.drinks):
-            return print(f"{index+1} {Drink.vivod(self.drinks[index])}")
+            return print(f"{index+1} {Drink.__str__(self.drinks[index])}")
         elif 0 <= index < len(self.drinks) + len(self.foods): 
-            return print(f"{index+1} {Food.vivod(self.foods[index - len(self.drinks)])}")
+            return print(f"{index+1} {Food.__str__(self.foods[index - len(self.drinks)])}")
         else:
             raise IndexError("Неверный индекс")
         
@@ -82,10 +82,4 @@ class Menu(Drink,Food):
 
     def save_to_file(self, file_name):
         with open(file_name, "w", encoding="utf-8") as f:
-            f.write(f"Ресторан: {self.restaurant_name}\nАдрес: {self.address}\n\n")
-            f.write("Напитки:\n")
-            for drink in self.drinks:
-                f.write(f"{self.drinks.index(drink)+1} {Drink.vivod(drink)} \n")
-            f.write("\nБлюда:\n")
-            for food in self.foods:
-                f.write(f"{self.foods.index(food)+1+len(self.drinks)} {Food.vivod(food)} \n")
+            f.write(self.__str__())

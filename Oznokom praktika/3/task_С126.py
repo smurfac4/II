@@ -29,9 +29,10 @@ from Menu import Menu,Drink,Food
 #ОБЪЕКТЫ Drink
 ingredients_drink1 = {"Карамельный сироп": 50}
 drink1 = Drink("Вода с сиропом", 150, "Напитки", 300, ingredients_drink1) 
-drink1.add_ingredient("Вода",150)
-drink1.remove_ingredient("Лимонная кислота",50) 
-#drink1.print_ingredients() # напечатал все ингредиенты 
+drink1.add_ingredient("Вода",150) #добавление ингредиента
+drink1.remove_ingredient("Лимонная кислота",50) #удаление ингредиента
+drink1.print_ingredients() # форматирование печати состава напитка 
+
 drink2 = Drink("Sprite", 50, "Напитки", 250)
 drink2.add_ingredient("Сироп лайма", 15)
 drink2.add_ingredient("Кислота лимонная", 10)
@@ -41,36 +42,36 @@ drink2.add_ingredient("Кислота лимонная", 10)
 ingredients_food1 = {"Тесто для пиццы", "Сыр моцарелла", "Помидоры"}
 food1 = Food("Салат цезарь",200,120,600,ingredients_food1)
 food2 = Food("Пицца Маргарита",500,450,300)
-food2.add_ingredient("Тесто для пиццы")
+food2.add_ingredient("Тесто для пиццы", 20)
 food2.add_ingredient("Сыр моцарелла", 100)
 food2.add_ingredient("Помидоры", 20)
 
+food2.change_preparation_time(100) #изменение времени приготовления 
+food2.add_ingredient("Кинза", 10) #добавить ингредиент
+food2.remove_ingredient("Кинза", 5) #удалить ингредиент
+food2.change_ingredient("Помидоры","Огурцы") #Изменить ингредиент
+print(food2) # преобразования в строку для печати основной информации
+
 # Объект Menu
-restaurant_menu = Menu("Ресторан 'Приятного Аппетита'", "ул. Старобитцевская д. 32", [drink1, drink2], [food1, food2])
-print(restaurant_menu) # Выводим всю информацию о меню
+restaurant_menu = Menu("Ресторан 'Приятного Аппетита'", "ул. Старобитцевская д. 32", [drink1, drink2], [food1, food2]) 
+print(restaurant_menu) # преобразовани в строку для печати всей информации о меню
 print(len(restaurant_menu)) # Получаем количество пунктов меню
 
 restaurant_menu[1] #Получаем напитка и блюда по номеру
 restaurant_menu[3]
 #restaurant_menu[6]
 
-#  измеянем по индексу напитки
-(1,"Вода с сиропам v2.0", 100, "Напитки", 300, {"Карамельный сироп": 50 , "Ягодный сироп": 40})
-
-
+# измеянем по индексу напитки
 new_change_eda = Drink("Вода с сиропам v2.0", 100, "Напитки", 300, {"Карамельный сироп": 50 , "Ягодный сироп": 40})
 restaurant_menu[1] = new_change_eda
 
-# # Удаляем напиток по индексу
+#Удаляем по индексу
 del restaurant_menu[1]
 
-print(restaurant_menu) # Выводим всю информацию о меню для проверки изменений
-
-
-restaurant_menu += Drink("Прохладный чай", 30, "Прохладительные напитки",200, {"чай": 10, "сахар":10, "лемон":10, "вода":150})
-restaurant_menu -= food2
+restaurant_menu += Drink("Прохладный чай", 30, "Прохладительные напитки",200, {"чай": 10, "сахар":10, "лемон":10, "вода":150})#добавление пункта меню
+restaurant_menu -= food2 #удаление пункта меню
 
 print(restaurant_menu) # Выводим всю информацию о меню для проверки изменений
 
-# # Создаем txt-файл и записываем всю информацию в него
+# Создаем txt-файл и записываем всю информацию в него
 restaurant_menu.save_to_file("restaurant_menu.txt")

@@ -8,19 +8,19 @@
 from Item import Item
 
 class Drink(Item): #производный класс от item
-    def __init__(self, name, price, menu_category, volume, ingredients = {}):
+    def __init__(self, name : str, price: float, menu_category: str, volume: int, ingredients = {}):
         super().__init__(name, price) #вызов родительского конструктора с price и name
         self.volume = volume #объем напитка
         self.menu_category = menu_category #раздел меню
         self.ingredients = ingredients #состав напитка
 
-    def add_ingredient(self, name, quantity = None): #добавить ингредиент
+    def add_ingredient(self, name: str, quantity: float = None): #добавить ингредиент
         if name in self.ingredients: #увеличивает количство ингредиента если он есть
             self.ingredients[name] += quantity
         else: # если нет , то создает ингредиент 
             self.ingredients[name] = quantity
 
-    def remove_ingredient(self, name: str, quantity: int): #удалить ингредиент 
+    def remove_ingredient(self, name: str, quantity: float): #удалить ингредиент 
         if name in self.ingredients: #если этот ингридент существует
             if self.ingredients[name] <= quantity: # если кол-во ингр. <= кол-ву удалений
                 del self.ingredients[name] # удаляем ингридиент
@@ -32,7 +32,7 @@ class Drink(Item): #производный класс от item
         for name, quantity in self.ingredients.items():
             print(f"{name}: {quantity} мл")
     
-    def vivod(self): #метод преобразования в строку для печати основной информации
+    def __str__(self): #метод преобразования в строку для печати основной информации
         return f"{self.name} - {self.menu_category} - {self.volume} мл - {self.price:.2f} Р"
     
     def change_all(self,name: str, price: int, volume: int, menu_category: str, ingredients: dict ):

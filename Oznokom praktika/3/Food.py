@@ -19,7 +19,7 @@ class Food(Item): #производный класс от Item
     def change_preparation_time(self, new_time): # меняем время приготовления
         self.preparation_time = new_time
 
-    def add_ingredient(self, name , weight = None): #добавляем ингридиент 
+    def add_ingredient(self, name : str , weight : int): #добавляем ингридиент 
         if name is self.ingredients:
             self.ingredients[name] += weight
         else:
@@ -43,7 +43,7 @@ class Food(Item): #производный класс от Item
         for name, numbers in self.ingredients.items():
             print(f"{name}: {numbers} грамм")
 
-    def vivod(self): #вывод
+    def __str__(self): #вывод
         return f"{self.name} - {self.weight} грамм - {self.price:.2f} Р - {self.preparation_time} сек"
     
     def change_all(self,name: str, price: int, weight: int, preparation_time: int, ingredients: dict ):
