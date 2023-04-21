@@ -13,26 +13,33 @@ class Drink(Item): #производный класс от item
         self.volume = volume #объем напитка
         self.menu_category = menu_category #раздел меню
         self.ingredients = ingredients #состав напитка
+        self.log_event("CRE",f"Создан объект |{name}| класса Drink")
 
     def add_ingredient(self, name: str, quantity: float = None): #добавить ингредиент
         if name in self.ingredients: #увеличивает количство ингредиента если он есть
             self.ingredients[name] += quantity
+            self.log_event("INF", f"Добавлено кол-во ингредиента  |{name}| в напиток |{self.name}| в количестве |{quantity}|")
         else: # если нет , то создает ингредиент 
             self.ingredients[name] = quantity
+            self.log_event("INF", f"Добавлен ингредиент |{name}| в напиток |{self.name}| в количестве |{quantity}|")
 
     def remove_ingredient(self, name: str, quantity: float): #удалить ингредиент 
         if name in self.ingredients: #если этот ингридент существует
             if self.ingredients[name] <= quantity: # если кол-во ингр. <= кол-ву удалений
                 del self.ingredients[name] # удаляем ингридиент
+                self.log_event("INF", f"Удален ингредиент |{name}| из напитка |{self.name}|")
             else:
                 self.ingredients[name] -= quantity #удаляем кол-во ингредиентов
+                self.log_event("INF", f"Удален ингредиент |{name}| из напитка |{self.name}| в количестве |{quantity}|")
 
     def print_ingredients(self): #напечатать состав напитка 
         print(f"Ингредиенты: {self.name}")
+        self.log_event("INF", f"Напечатан состав напитка |{self.name}|")
         for name, quantity in self.ingredients.items():
             print(f"{name}: {quantity} мл")
     
     def __str__(self): #метод преобразования в строку для печати основной информации
+        self.log_event("INF", f"Печать основной информации о напитке |{self.name}|")
         return f"{self.name} - {self.menu_category} - {self.volume} мл - {self.price:.2f} Р"
     
     def change_all(self,name: str, price: int, volume: int, menu_category: str, ingredients: dict ):
@@ -41,3 +48,20 @@ class Drink(Item): #производный класс от item
         self.volume = volume #объем напитка
         self.menu_category = menu_category #раздел меню
         self.ingredients = ingredients #состав напитка
+        self.log_event("INF", f"Изменены параметры объекта |{self.name}| класса Drink")
+
+    # def __getstate__(self) -> dict:  # Как мы будем "сохранять" класс
+    #     state = {}
+    #     state["name"] = self.name
+    #     state["price"] = self.price
+    #     state["volume"] = self.volume
+    #     state["menu_category"] =  self.menu_category
+    #     state["ingredients"] = self.ingredients
+    #     return state
+    
+    # def __setstate__(self, state: dict):  # Как мы будем восстанавливать класс из байтов
+    #     self.name = state["name"]
+    #     self.price = state["price"]
+    #     self.volume = state["volume"]
+    #     self.menu_category= state["menu_category"]
+    #     self.ingredients = state["ingredients"]

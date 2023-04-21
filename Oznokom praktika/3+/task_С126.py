@@ -23,7 +23,7 @@
 Предусмотреть хотя бы в 3 местах обработку возможных исключений.
 В каждом модуле провести подробное тестирование всех создаваемых объектов и функций.
 """
-
+import pickle
 from Menu import Menu,Drink,Food
 
 #ОБЪЕКТЫ Drink
@@ -68,10 +68,23 @@ restaurant_menu[1] = new_change_eda
 #Удаляем по индексу
 del restaurant_menu[1]
 
-restaurant_menu += Drink("Прохладный чай", 30, "Прохладительные напитки",200, {"чай": 10, "сахар":10, "лемон":10, "вода":150})#добавление пункта меню
+restaurant_menu += Drink("Прохладный чай", 30, "Прохладительные напитки",200, {"чай": 10, "сахар":10, "лемон":10, "вода":150}) #добавление пункта меню
 restaurant_menu -= food2 #удаление пункта меню
 
 print(restaurant_menu) # Выводим всю информацию о меню для проверки изменений
 
 # Создаем txt-файл и записываем всю информацию в него
 restaurant_menu.save_to_file("restaurant_menu.txt")
+
+#Сериализация 
+
+
+all_objects = [food1,food2,drink1,drink2, restaurant_menu]
+
+with open('data.pkl', 'wb') as f:
+     pickle.dump(food1,f)
+     pickle.dump(food2,f)
+     pickle.dump(drink1,f)
+     pickle.dump(drink2,f)
+     pickle.dump(restaurant_menu,f)
+        
