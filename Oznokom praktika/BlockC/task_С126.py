@@ -76,10 +76,7 @@ print(restaurant_menu) # Выводим всю информацию о меню 
 # Создаем txt-файл и записываем всю информацию в него
 restaurant_menu.save_to_file("restaurant_menu.txt")
 
-#Сериализация 
-
-
-all_objects = [food1,food2,drink1,drink2, restaurant_menu]
+#сериализация файлов 
 
 with open('data.pkl', 'wb') as f:
      pickle.dump(food1,f)
@@ -87,4 +84,3 @@ with open('data.pkl', 'wb') as f:
      pickle.dump(drink1,f)
      pickle.dump(drink2,f)
      pickle.dump(restaurant_menu,f)
-        
