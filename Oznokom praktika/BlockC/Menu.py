@@ -100,11 +100,3 @@ class Menu(Drink,Food):
         with open(file_name, "w", encoding="utf-8") as f:
             f.write(self.__str__())
 
-    def serialization_menu(self): # запрашиваю объект меню 
-        all_object_list = [self.drinks , self.foods , self] 
-        print (all_object_list)
-        with open('data.pkl', 'wb') as f:
-            pickle.dump(self.drinks, f)
-            pickle.dump(self.foods, f)
-            pickle.dump(self, f)
-        f.close()

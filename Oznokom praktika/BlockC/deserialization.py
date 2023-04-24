@@ -1,3 +1,4 @@
+
 import pickle
 
 #десериализация 
@@ -17,4 +18,3 @@ food2.change_preparation_time(200)
 print(food2)
 print(food1)
 print(restaurant_menu)
-
