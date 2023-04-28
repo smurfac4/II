@@ -1,5 +1,6 @@
 import random
 import time
+import datetime
 
 def binary_search(data, elem):
     count = 0
@@ -48,4 +49,4 @@ if index == -1:
 else:
     print("Элемент найден в позиции", index)
 print("Количество операций сравнения:", count)
-print("Время работы поиска:", end_time - start_time)
+print(f"Время работы поиска: {end_time - start_time:.20}")

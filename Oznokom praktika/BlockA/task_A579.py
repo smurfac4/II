@@ -53,16 +53,16 @@ apps = [{"id" : 1 , "title" : "Google Play", "description" : "Applications for d
         {"id" : 9 , "title" : "Aviasales", "description" : "Search for cheap tickets in the CIS" ,"rating" : 4.6 , "last Feedback" : "A hotel? Trivago!" },
         {"id" : 10 , "title" : "Discord", "description" : "Connect with people all over the world" ,"rating" : 4.5 , "last Feedback" : "I always use it" },]
 
-# while 1:
-#     print('0 - Выйти из цикла','1 – вывода информации о всех приложениях;' ,
-# "2 – вывода информации о приложении по введенному с клавиатуры номеру;",
-# "3 – вывода количества приложений, чей рейтинг выше чем введенный рейтинг;",
-# "4 – обновлении всей информации о приложении по введенному номеру;",
-# "5 - удалении приложения по номеру.",sep ="\n")
-#     k = input()
-#     if k == "0":
-#         break 
-#     exec('action'+k+"(apps)")
+while 1:
+    print('0 - Выйти из цикла','1 – вывода информации о всех приложениях;' ,
+"2 – вывода информации о приложении по введенному с клавиатуры номеру;",
+"3 – вывода количества приложений, чей рейтинг выше чем введенный рейтинг;",
+"4 – обновлении всей информации о приложении по введенному номеру;",
+"5 - удалении приложения по номеру.",sep ="\n")
+    k = input()
+    if k == "0":
+        break 1
+    exec('action'+k+"(apps)")
 
 action1(apps)
 

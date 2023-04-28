@@ -41,6 +41,8 @@ def execute_files():
 
         # Отфильтровать файлы, чтобы оставить только те, которые начинаются с "task_" и оканчиваются на ".py"
         py_files = [file for file in files if file.startswith("task_") and file.endswith(".py")]
+
+
         start_time = time.time()
         # Пройти по каждому файлу
         for py_file in py_files:
@@ -55,7 +57,7 @@ def execute_files():
             # Засечь время выполнения
             end_time = time.time()
             # Вывести время выполнения
-            print(f"Файл {py_file} выполнен за {end_time - start_time:.7f} секунд")
+            print(f"Файл {py_file} выполнен за {end_time - start_time:.14f} секунд")
             spec.loader.exec_module(module)
             print (f"\n")
 
