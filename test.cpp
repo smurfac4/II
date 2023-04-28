@@ -10,5 +10,3 @@ class Task311{
     void vivod();
 };
 #endif
-
-}
